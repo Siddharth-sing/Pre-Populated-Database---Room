@@ -7,7 +7,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Quote::class], version = 2)
+@Database(entities = [Quote::class], version = 5)
 abstract class QuoteDatabase : RoomDatabase() {
     abstract fun quoteDao(): QuoteDao
 
@@ -19,7 +19,7 @@ abstract class QuoteDatabase : RoomDatabase() {
                 synchronized(this) {
                     INSTANCE =
                         Room.databaseBuilder(context, QuoteDatabase::class.java, "quote_database")
-                            .createFromAsset("quote.db")
+                            .createFromAsset("database/quote.db")
                             .build()
                 }
             }

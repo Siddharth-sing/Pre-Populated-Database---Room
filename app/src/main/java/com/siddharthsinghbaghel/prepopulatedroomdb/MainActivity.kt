@@ -1,12 +1,15 @@
 package com.siddharthsinghbaghel.prepopulatedroomdb
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: QuoteViewModel
+     private lateinit var viewModel: QuoteViewModel
      private var quoteList = ArrayList<Quote>()
 
 
@@ -19,11 +22,14 @@ class MainActivity : AppCompatActivity() {
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         )[QuoteViewModel::class.java]
 
-      /*  viewModel.allQuote.observe(this){
-            quoteList = it as ArrayList<Quote>
+       viewModel.allQuote.observe(this){
+             quoteList.addAll(it)
+          Toast.makeText(this,"${quoteList.size}",LENGTH_SHORT).show()
+          Log.d("TAG 1", "Quote 1 -> ${quoteList[0].id}\n${quoteList[0].text}\n${quoteList[0].author}\n\n")
+          Log.d("TAG 2", "Quote 2 -> ${quoteList[1].id}\n${quoteList[1].text}\n${quoteList[1].author}\n\n")
         }
 
-        print("Author name : ${quoteList.size}")*/
+
 
 
 
