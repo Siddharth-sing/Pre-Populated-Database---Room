@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: QuoteViewModel
-    var quoteList = ArrayList<Quote>()
+     private var quoteList = ArrayList<Quote>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,11 +19,11 @@ class MainActivity : AppCompatActivity() {
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         )[QuoteViewModel::class.java]
 
-        viewModel.allQuote.observe(this){
+      /*  viewModel.allQuote.observe(this){
             quoteList = it as ArrayList<Quote>
         }
 
-        print("Author name : ${quoteList.size}")
+        print("Author name : ${quoteList.size}")*/
 
 
 

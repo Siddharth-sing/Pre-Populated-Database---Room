@@ -1,7 +1,6 @@
 package com.siddharthsinghbaghel.prepopulatedroomdb
 
 import android.app.Application
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
