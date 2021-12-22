@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
      private lateinit var viewModel: QuoteViewModel
      private var quoteList = ArrayList<Quote>()
      private var i:Int = 0
+     private var red: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +44,14 @@ class MainActivity : AppCompatActivity() {
 
         imgBook.setOnClickListener{
  
-            imgBook.setImageResource(R.drawable.ic_baseline_bookmark_diff)
+            if(!red){
+                imgBook.setImageResource(R.drawable.ic_baseline_bookmark_diff)
+                red = true
+            }else{
+                imgBook.setImageResource(R.drawable.ic_baseline_bookmark_24)
+                red = false
+            }
+
         }
 
 
