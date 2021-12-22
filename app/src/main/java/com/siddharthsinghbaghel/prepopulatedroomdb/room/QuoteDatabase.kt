@@ -7,8 +7,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.siddharthsinghbaghel.prepopulatedroomdb.room.entities.Quote
+import com.siddharthsinghbaghel.prepopulatedroomdb.room.entities.Record
 
-@Database(entities = [Quote::class], version = 5)
+@Database(entities = [Quote::class, Record::class], version = 6)
 abstract class QuoteDatabase : RoomDatabase() {
     abstract fun quoteDao(): QuoteDao
 

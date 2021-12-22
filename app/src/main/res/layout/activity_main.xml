@@ -23,6 +23,16 @@
         android:layout_below="@+id/txt"
         android:layout_centerInParent="true"
         />
+    <ImageView
+        android:id="@+id/imgBook"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_below="@+id/btn"
+        android:src="@drawable/ic_baseline_bookmark_24"
+        android:layout_centerInParent="true"
+        android:layout_margin="15dp"
+        android:clickable="true"
+        android:focusable="true" />
 
 
 </RelativeLayout>
