@@ -1,6 +1,8 @@
 package com.siddharthsinghbaghel.prepopulatedroomdb
 
 import android.os.Bundle
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
        btn.setOnClickListener{
 
+           Toast.makeText(this,"${quoteList.size}",LENGTH_LONG).show()
            if(i<quoteList.size)
            {
                txt.text = quoteList[i].text
