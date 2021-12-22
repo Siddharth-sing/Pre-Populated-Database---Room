@@ -15,19 +15,35 @@
         android:textSize="54sp"
         android:layout_centerInParent="true"
         />
-    <Button
-        android:id="@+id/btn"
+
+    <LinearLayout
+        android:id="@+id/llBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:orientation="horizontal"
         android:layout_below="@+id/txt"
         android:layout_centerInParent="true"
-        />
+        android:padding="10dp"
+        >
+    <Button
+        android:id="@+id/btnN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Next" />
+    <Button
+        android:id="@+id/btnP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Previous" />
+
+    </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/btn"
+        android:layout_below="@+id/llBtn"
         android:layout_centerInParent="true"
         >
     <ImageView

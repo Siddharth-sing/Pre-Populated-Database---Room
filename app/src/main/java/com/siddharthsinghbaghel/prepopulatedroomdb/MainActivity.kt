@@ -3,6 +3,7 @@ package com.siddharthsinghbaghel.prepopulatedroomdb
 import android.os.Bundle
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
+import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
      private lateinit var viewModel: QuoteViewModel
      private var quoteList = ArrayList<Quote>()
-     private var i:Int = 0
+     private var i:Int = -1
      private var red: Boolean = false
      private var green: Boolean = false
 
@@ -35,16 +36,32 @@ class MainActivity : AppCompatActivity() {
              quoteList.addAll(it)
         }
 
-       btn.setOnClickListener{
+       btnN.setOnClickListener{
 
-           Toast.makeText(this,"${quoteList.size}",LENGTH_LONG).show()
-           if(i<quoteList.size)
+           if(i<quoteList.size-1)
            {
+               Toast.makeText(this,"s-$i",LENGTH_SHORT).show()
+               i++
                txt.text = quoteList[i].text
+               Toast.makeText(this,"e-$i",LENGTH_SHORT).show()
+           }else{
+               Toast.makeText(this,"End",LENGTH_SHORT).show()
            }
-           i++
-
        }
+        btnP.setOnClickListener{
+            if(i>0)
+            {
+                Toast.makeText(this,"sp-$i",LENGTH_SHORT).show()
+                i--
+
+                txt.text = quoteList[i].text
+                Toast.makeText(this,"ep-$i",LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this,"End",LENGTH_SHORT).show()
+            }
+
+
+        }
 
         imgBook.setOnClickListener{
  
