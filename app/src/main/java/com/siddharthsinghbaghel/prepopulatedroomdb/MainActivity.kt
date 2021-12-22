@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
      private var quoteList = ArrayList<Quote>()
      private var i:Int = 0
      private var red: Boolean = false
+     private var green: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +51,17 @@ class MainActivity : AppCompatActivity() {
             }else{
                 imgBook.setImageResource(R.drawable.ic_baseline_bookmark_24)
                 red = false
+            }
+
+        }
+
+        imgDone.setOnClickListener{
+            if(!green){
+                imgDone.setImageResource(R.drawable.ic_baseline_done_all_24)
+                green = true
+            }else{
+                imgDone.setImageResource(R.drawable.ic_baseline_done_all_un)
+                green = false
             }
 
         }
