@@ -1,4 +1,4 @@
-package com.siddharthsinghbaghel.prepopulatedroomdb
+package com.siddharthsinghbaghel.prepopulatedroomdb.room.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

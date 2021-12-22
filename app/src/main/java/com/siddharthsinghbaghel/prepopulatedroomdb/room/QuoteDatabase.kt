@@ -1,4 +1,4 @@
-package com.siddharthsinghbaghel.prepopulatedroomdb
+package com.siddharthsinghbaghel.prepopulatedroomdb.room
 
 
 
@@ -6,6 +6,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.siddharthsinghbaghel.prepopulatedroomdb.room.entities.Quote
 
 @Database(entities = [Quote::class], version = 5)
 abstract class QuoteDatabase : RoomDatabase() {
