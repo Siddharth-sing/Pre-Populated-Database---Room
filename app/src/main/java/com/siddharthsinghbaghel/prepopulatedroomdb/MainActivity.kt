@@ -6,11 +6,13 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
      private lateinit var viewModel: QuoteViewModel
      private var quoteList = ArrayList<Quote>()
+     private var i:Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,10 +26,17 @@ class MainActivity : AppCompatActivity() {
 
        viewModel.allQuote.observe(this){
              quoteList.addAll(it)
-          Toast.makeText(this,"${quoteList.size}",LENGTH_SHORT).show()
-          Log.d("TAG 1", "Quote 1 -> ${quoteList[0].id}\n${quoteList[0].text}\n${quoteList[0].author}\n\n")
-          Log.d("TAG 2", "Quote 2 -> ${quoteList[1].id}\n${quoteList[1].text}\n${quoteList[1].author}\n\n")
         }
+
+       btn.setOnClickListener{
+
+           if(i<quoteList.size)
+           {
+               txt.text = quoteList[i].text
+           }
+           i++
+
+       }
 
 
 
