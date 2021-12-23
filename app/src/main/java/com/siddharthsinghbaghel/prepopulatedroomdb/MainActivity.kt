@@ -15,12 +15,12 @@ class MainActivity : AppCompatActivity() {
 
      private lateinit var viewModel: QuoteViewModel
      private var quoteList = ArrayList<Quote>()
+     private var recordList = ArrayList<Record>()
      private var i:Int = -1
      private var red: Boolean = false
      private var green: Boolean = false
-     private var done: Boolean = false
-     private var undone: Boolean = true
-     private var bookmarked: Boolean = false
+     private var mId: Int = -1
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,13 +37,32 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        imgDone.setOnClickListener {
+
+            if(green)
+            {
+                greenTick(0)
+                val cBook = recordList[mId].bookmark
+                val uRecord = Record(mId,done = false, undone = true, bookmark = cBook)
+                viewModel.updateRecord(uRecord)
+            }else{
+                greenTick(1)
+                val cBook = recordList[mId].bookmark
+                val uRecord = Record(mId,done = true, undone = false, bookmark = cBook)
+                viewModel.updateRecord(uRecord)
+            }
+
+        }
+
+
         btnN.setOnClickListener{
 
            if(i<quoteList.size-1)
            {
                i++
                txt.text = quoteList[i].text
-               checkRecord(quoteList[i].id)
+               mId = quoteList[i].id
+               checkRecord(mId)
            }else{
                Toast.makeText(this,"End",LENGTH_SHORT).show()
            }
@@ -54,24 +73,19 @@ class MainActivity : AppCompatActivity() {
             {
                 i--
                 txt.text = quoteList[i].text
-                checkRecord(quoteList[i].id)
+                mId = quoteList[i].id
+                checkRecord(mId)
 
             }else{
                 Toast.makeText(this,"End",LENGTH_SHORT).show()
             }
         }
 
-
-
-        imgBook.setOnClickListener{
-            bookmark()
-        }
-
     }
 
     private fun checkRecord(id: Int) {
 
-        val recordList = ArrayList<Record>()
+        recordList = ArrayList<Record>()
         viewModel.allRecords.observe(this){
             recordList.addAll(it)
         }
