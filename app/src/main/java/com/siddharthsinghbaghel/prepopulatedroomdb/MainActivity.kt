@@ -1,6 +1,7 @@
 package com.siddharthsinghbaghel.prepopulatedroomdb
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
@@ -45,13 +46,33 @@ class MainActivity : AppCompatActivity() {
                 val cBook = recordList[mId].bookmark
                 val uRecord = Record(mId,done = false, undone = true, bookmark = cBook)
                 viewModel.updateRecord(uRecord)
+                printTable()
             }else{
                 greenTick(1)
                 val cBook = recordList[mId].bookmark
                 val uRecord = Record(mId,done = true, undone = false, bookmark = cBook)
                 viewModel.updateRecord(uRecord)
+                printTable()
             }
 
+        }
+        imgBook.setOnClickListener{
+            if(red){
+                bookmark(0)
+                val cDone = recordList[mId].done
+                val cUndone = recordList[mId].undone
+                val uRecord = Record(mId,done = cDone, undone = cUndone, bookmark = false)
+                viewModel.updateRecord(uRecord)
+                printTable()
+            }else{
+                bookmark(1)
+                val cDone = recordList[mId].done
+                val cUndone = recordList[mId].undone
+                val uRecord = Record(mId,done = cDone, undone = cUndone, bookmark = true)
+                viewModel.updateRecord(uRecord)
+                printTable()
+
+            }
         }
 
 
@@ -94,9 +115,10 @@ class MainActivity : AppCompatActivity() {
 
         if(currentIndex!=-1){
             extractRecordAndSet(currentIndex,recordList)
+            printTable()
         }else{
             doneQuoteReading(quoteList[i].id)
-            Toast.makeText(this,"Here Creating",LENGTH_SHORT).show()
+            printTable()
         }
 
     }
@@ -158,9 +180,20 @@ class MainActivity : AppCompatActivity() {
 
        val newRecord = Record(id, done = true, undone = false, bookmark = false)
         viewModel.insertRecord(newRecord)
-        Toast.makeText(this,"Now Greening",LENGTH_SHORT).show()
+        Toast.makeText(this,"Now Greening and No Bookmarking",LENGTH_SHORT).show()
         greenTick(1)
+        bookmark(0)
 
+    }
+
+    fun printTable(){
+        val s = recordList.size
+        var p:Int = 0
+        while(p<s)
+        {
+            Log.d("TAG","\nid - ${recordList[p].id},\ndone - ${recordList[p].done},\nbookmark - ${recordList[p].bookmark}\n\n")
+            p++
+        }
     }
 }
 
