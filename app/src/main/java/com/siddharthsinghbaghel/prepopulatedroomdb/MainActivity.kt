@@ -67,16 +67,7 @@ class MainActivity : AppCompatActivity() {
             bookmark()
         }
 
-            imgDone.setOnClickListener{
-                if(!green){
-                    imgDone.setImageResource(R.drawable.ic_baseline_done_all_24)
-                    green = true
-                }else{
-                    imgDone.setImageResource(R.drawable.ic_baseline_done_all_un)
-                    green = false
-                }
-            }
-        }
+    }
 
     private fun checkRecord(id: Int) {
 
@@ -88,11 +79,34 @@ class MainActivity : AppCompatActivity() {
         val currentIndex = searchList(id,recordList)
 
         if(currentIndex!=-1){
+            extractRecordAndSet(currentIndex,recordList)
 
         }else{
             doneQuoteReading(quoteList[i].id)
         }
 
+    }
+
+    private fun extractRecordAndSet(currentIndex: Int, recordList: ArrayList<Record>) {
+        if(recordList[currentIndex].bookmark)
+        {
+            bookmark(1)
+        } else{bookmark(0)}
+
+        if(recordList[currentIndex].done)
+        {
+            greenTick(1)
+        }
+    }
+
+    private fun greenTick(i: Int) {
+        if(i==1){
+            imgDone.setImageResource(R.drawable.ic_baseline_done_all_24)
+            green = true
+        }else{
+            imgDone.setImageResource(R.drawable.ic_baseline_done_all_un)
+            green = false
+        }
     }
 
     private fun searchList(id: Int, recordList: ArrayList<Record>): Int {
@@ -112,8 +126,8 @@ class MainActivity : AppCompatActivity() {
         return res
     }
 
-    private fun bookmark() {
-           if(!red){
+    private fun bookmark(i:Int) {
+           if(i==1){
                 imgBook.setImageResource(R.drawable.ic_baseline_bookmark_diff)
                 red = true
             }else{
@@ -124,13 +138,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun doneQuoteReading(id: Int) {
 
-       val recordId: Int = id
        val newRecord = Record(id, done = true, undone = false, bookmark = false)
-
         viewModel.insertRecord(newRecord)
+        greenTick(1)
 
     }
 }
 
 
 
+/*
+     imgDone.setOnClickListener{
+                if(!green){
+                    imgDone.setImageResource(R.drawable.ic_baseline_done_all_24)
+                    green = true
+                }else{
+                    imgDone.setImageResource(R.drawable.ic_baseline_done_all_un)
+                    green = false
+                }
+            }
+* */
