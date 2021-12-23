@@ -94,9 +94,9 @@ class MainActivity : AppCompatActivity() {
 
         if(currentIndex!=-1){
             extractRecordAndSet(currentIndex,recordList)
-
         }else{
             doneQuoteReading(quoteList[i].id)
+            Toast.makeText(this,"Here Creating",LENGTH_SHORT).show()
         }
 
     }
@@ -110,6 +110,10 @@ class MainActivity : AppCompatActivity() {
         if(recordList[currentIndex].done)
         {
             greenTick(1)
+        }
+        if(recordList[currentIndex].undone)
+        {
+            greenTick(0)
         }
     }
 
@@ -154,6 +158,7 @@ class MainActivity : AppCompatActivity() {
 
        val newRecord = Record(id, done = true, undone = false, bookmark = false)
         viewModel.insertRecord(newRecord)
+        Toast.makeText(this,"Now Greening",LENGTH_SHORT).show()
         greenTick(1)
 
     }
