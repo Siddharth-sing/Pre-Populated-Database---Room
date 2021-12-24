@@ -23,6 +23,12 @@ class MainActivity : AppCompatActivity() {
      private var mId: Int = -1
 
 
+    override fun onStop() {
+        super.onStop()
+         i = -1
+        mId = -1
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -191,7 +197,7 @@ class MainActivity : AppCompatActivity() {
         var p:Int = 0
         while(p<s)
         {
-            Log.d("TAG","\nid - ${recordList[p].id},\ndone - ${recordList[p].done},\nbookmark - ${recordList[p].bookmark}\n\n")
+            Log.d("TAG","\n\nSize = $s --> id - ${recordList[p].id},\ndone - ${recordList[p].done},\nbookmark - ${recordList[p].bookmark}\n\n____________________________________\n\n")
             p++
         }
     }
